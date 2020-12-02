@@ -1,0 +1,37 @@
+sudo: required
+language: node_js
+node_js:
+  - "10"
+services:
+  - docker
+before_install:
+  # Install heroku CLI
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+
+script:
+  # - docker run smartdockerimage/management-app npm test -- --coverage
+  - docker build -t $DOCKER_ID/management-app-client ./client
+  - docker tag $DOCKER_ID/management-app-client registry.heroku.com/$HEROKU_APP_CLIENT/web
+  - docker build -t $DOCKER_ID/management-app-api ./api
+  - docker tag $DOCKER_ID/management-app-api registry.heroku.com/$HEROKU_APP_BACKEND/web
+  # - docker build -t $DOCKER_ID/management-app-nginx ./nginx
+  # - docker tag $DOCKER_ID/management-app-nginx registry.heroku.com/$HEROKU_APP_NGINX/web
+
+# Deploy your application to heroku
+deploy:
+  provider: script
+  script:
+    # Push to docker hub and heroku
+    docker push $DOCKER_ID/management-app-client;
+    docker push registry.heroku.com/$HEROKU_APP_CLIENT/web;
+    heroku container:release web --app $HEROKU_APP_CLIENT;
+    docker push $DOCKER_ID/management-app-api;
+    docker push registry.heroku.com/$HEROKU_APP_BACKEND/web;
+    heroku container:release web --app $HEROKU_APP_BACKEND;
+    # docker push $DOCKER_ID/management-app-nginx;
+    # docker push registry.heroku.com/$HEROKU_APP_NGINX/web;
+    # heroku container:release web --app $HEROKU_APP_NGINX;
+  on:
+    branch: master

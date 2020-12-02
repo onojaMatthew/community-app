@@ -1,0 +1,185 @@
+.h6, h6 {
+  font-size: .75rem !important;
+  font-weight: 500;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  line-height: 1.5em;
+  text-transform: uppercase;
+}
+
+.name h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a .material-icons {
+  vertical-align: middle;
+}
+
+.home-header {
+  min-height: 60px !important;
+}
+
+.fixed-top {
+  position: fixed;
+  z-index: 1030;
+  left: 0;
+  right: 0;
+}
+
+.profile-content {
+  min-height: 400px !important;
+  margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 480px){
+  .profile-content {
+    margin-bottom: 15px;
+  }
+}
+
+.page-header {
+  background-image: url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');
+  height: 380px;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0; 
+  display: flex;
+  align-items: center;
+}
+
+.main-raised {
+  margin: -60px 30px 0;
+  border-radius: 6px;
+  box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.main {
+  background: #FFF;
+  position: relative;
+  z-index: 3;
+}
+
+.profile-page .profile {
+  text-align: center;
+}
+
+.profile-page .profile img {
+  max-width: 300px;
+  width: 200px;
+  margin: 0 auto;
+  -webkit-transform: translate3d(0,-50%,0);
+  -moz-transform: translate3d(0,-50%,0);
+  -o-transform: translate3d(0,-50%,0);
+  -ms-transform: translate3d(0,-50%,0);
+  transform: translate3d(0,-50%,0);
+}
+
+.img-raised {
+  box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.rounded-circle {
+  border-radius: 50%!important;
+  width: 200px;
+}
+
+.title {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  min-height: 32px;
+  color: #3C4858;
+  font-weight: 700;
+  font-family: "Roboto Slab","Times New Roman",serif;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.tab-space {
+  padding: 20px 0 50px;
+}
+
+.profile-page .gallery {
+  margin-top: 3.213rem;
+  padding-bottom: 50px;
+}
+
+.profile-page .gallery img {
+  width: 100%;
+  margin-bottom: 2.142rem;
+}
+
+.profile-page .profile .name{
+  margin-top: -100px;
+}
+
+img.rounded {
+  border-radius: 6px!important;
+}
+
+.ant-input:placeholder-shown {
+  border-color: #40a9ff;
+  margin-bottom: 15px;
+  margin-top: 20px !important;
+}
+.ant-input {
+  border-color: #40a9ff;
+}
+
+.passwordReset:hover {
+  background: #345b9d;
+  color:  #dfe7f4;
+  cursor: pointer;
+}
+
+.passwordReset {
+  background: #dfe7f4;
+  color: #345b9d;
+  padding: 5px;
+}
+
+.plusIcon {
+  color: #40a9ff;
+  font-weight: bolder;
+}
+
+.parent-container {
+  border: 1px solid #dfe7f4;
+  padding: 10px;
+}
+
+.child-container {
+  border: 1px solid #dfe7f4;
+  padding: 2px;
+}
+
+.formatIcon:hover {
+  background: #dfe7f4;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.prof-input:focus {
+  border: none !important;
+  
+  padding-top: 0 !important;
+}
+
+.card {
+  background: #f5f8fc !important;
+}
+
+.card:hover {
+  box-shadow: 4px 4px 6px #ededed, -4px -4px 6px #ededed;
+}
+
+.new-message-button {
+  background: #08c;
+  padding: 5px;
+  color: #fff !important;
+  font-size: 14px !important;
+}

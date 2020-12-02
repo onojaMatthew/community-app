@@ -1,0 +1,47 @@
+version: '2'
+services:
+  database:
+    image: "mongo"
+    container_name: "mongo-database"
+    environment:
+      - MONGO_INITDB_DATABASE=managementapp
+      - MONGO_INITDB_ROOT_USERNAME=managementapp
+      - MONGO_INITDB-ROOT_PASSWORD=managementapp1
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - "27017-27019:27017-27019"
+  nginx:
+      restart: always
+      build:
+        dockerfile: Dockerfile.dev
+        context: ./nginx
+      ports:
+        - "3050:80"
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    environment:
+      - REACT_APP_API_URL=http//:localhost:5255/v1
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=5255
+      - SECRETKEY=MYANuiwjdsio8ojsds3jjwsj34mksk0s7ssIJFDK
+      - NODE_ENV=development
+      - EMAIL_USER=onojamatthewsv@gmail.com
+      - EMAIL_PASSWORD=igochemat7@@
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+    command: ["npm", "run", "dev"]
+
+# export DOCKER_CLIENT_TIMEOUT=120
+# export COMPOSE_HTTP_TIMEOUT=120    
