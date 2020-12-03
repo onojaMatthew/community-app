@@ -16,9 +16,8 @@ exports.sendMail = async (email, message, subject, fromWho) => {
 
 exports.mailer = async (email, message, subject, fromWho) => {
   const testAccount = await nodeMailer.createTestAccount();
-  console.log(testAccount.pass, testAccount.user);
-  let transporter = await nodeMailer.createTransport( {
-    host : "onojamatthewsv@gmail.com",
+  let transporter = await nodeMailer.createTransport({
+    host : process.env.EMAIL_HOST, //"onojamatthewsv@gmail.com",
     port : 465 ,
     secure : true , // true for 465, false for other ports
     service: "Gmail",
@@ -27,7 +26,7 @@ exports.mailer = async (email, message, subject, fromWho) => {
       pass : process.env.EMAIL_PASSWORD
     } ,
     tls : { rejectUnauthorized : false },
-  } );
+  });
 
   const mailOptions = {
     from : fromWho ? fromWho : '"Ojirehprime Connect Verify Account" <info@ojirehprime.com>' , // sender address
