@@ -33,5 +33,6 @@ deploy:
     # docker push $DOCKER_ID/management-app-nginx;
     # docker push registry.heroku.com/$HEROKU_APP_NGINX/web;
     # heroku container:release web --app $HEROKU_APP_NGINX;
+    # commented every thing nginx out
   on:
     branch: master
